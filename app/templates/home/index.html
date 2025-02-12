@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- Hero Section -->
+    <section class="bg-blue-500 text-white py-20" style="background-image: url('https://via.placeholder.com/1500x600'); background-size: cover; background-position: center;">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-semibold mb-4">Welcome to Our Course Management System</h2>
+            <p class="text-lg mb-6">Explore a variety of online courses, track your progress, and manage your learning journey efficiently.</p>
+            <a href="#courses" class="bg-yellow-500 text-black px-6 py-3 rounded-full text-lg hover:bg-yellow-400 transition">Browse Courses</a>
+        </div>
+    </section>
+
+    <!-- Featured Courses -->
+    <section id="courses" class="py-20 bg-white">
+        <div class="container mx-auto text-center">
+            <h3 class="text-3xl font-semibold mb-8">Featured Courses</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                {% for course in course_list %}
+                <div class="bg-gray-200 p-6 rounded-lg shadow-lg">
+                    <h4 class="text-xl font-semibold mb-4"> {{course.name}} </h4>
+                    <p class="mb-4">A brief description of the course goes here. Learn the basics of something interesting!</p>
+                    <a href="{% url 'course_detail' course.id  %}" class="text-blue-600 hover:underline">View Details</a>
+                </div>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

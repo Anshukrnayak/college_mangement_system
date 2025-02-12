@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- Login Form Section -->
+    <section class="flex items-center justify-center py-16 bg-gray-50">
+        <div class="w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
+            <h2 class="text-2xl font-extrabold text-gray-900 text-center mb-6">Login to Your Account</h2>
+
+            <!-- Login Form -->
+            <form action="#" method="POST" class="space-y-6">
+                <!-- Email Input -->
+                {% csrf_token %}
+
+                <div>
+                    <label for="useranme" class="block text-sm font-medium text-gray-700">Username</label>
+                    <input type="text" name="username" id="username" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <!-- Password Input -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" name="password" id="password" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                </div>
+
+                <!-- Error Message (optional) -->
+                <div class="text-red-500 text-sm mt-2">
+                    <!-- Example: If email or password is wrong -->
+                {% for message in messages %}
+                    <p> {{message}} </p>
+                {% endfor %}
+
+                </div>
+
+                <!-- Submit Button -->
+                <div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Login</button>
+                </div>
+            </form>
+
+            <!-- Redirect to Register -->
+            <p class="mt-6 text-center text-sm text-gray-600">
+                Don't have an account? <a href="register.html" class="text-blue-600 hover:text-blue-700">Register here</a>
+            </p>
+        </div>
+    </section>
+
+
+
+{% endblock %}
+
