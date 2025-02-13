@@ -1,5 +1,4 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth.models import  User
 from django.views import  View
 from .forms import SignupForm
 from django.contrib.auth import authenticate,login,logout
@@ -13,10 +12,12 @@ class SignupView(View):
         return render(request,'account/signup.html',{'form':form})
 
     def post(self,request):
-        form=SignupForm()
+        form=SignupForm(data=request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('home')
+            login(request,form.save())
+            return redirect('student_registration')
+
+        return render(request,'account/signup.html',{'form':form})
 
 # Login page for check user is authenticate
 class LoginView(View):
@@ -44,4 +45,5 @@ class LogoutView(LoginRequiredMixin,View):
     def get(self,request):
         logout(request)
         return redirect('home')
+
 

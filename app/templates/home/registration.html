@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <!-- Registration Form Section -->
+    <section class="flex items-center justify-center py-16 bg-gray-50">
+        <div class="w-full max-w-2xl p-8 bg-white shadow-lg rounded-lg">
+            <h2 class="text-2xl font-extrabold text-gray-900 text-center mb-6">Student Registration</h2>
+
+            <!-- Registration Form -->
+            <form method="POST" class="space-y-6">
+                {% csrf_token %}
+                {{ form.as_p }}  <!-- Renders form fields with error handling -->
+
+                <div class="mt-4">
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Register</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+{% endblock %}

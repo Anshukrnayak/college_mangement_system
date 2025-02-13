@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import  User
 
+
 class SignupForm(UserCreationForm):
     class Meta:
         model=User
@@ -16,3 +17,11 @@ class SignupForm(UserCreationForm):
             'class'] = 'w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
         self.fields['email'].widget.attrs[
             'class'] = 'w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+
+
+
+
+
+
+
+

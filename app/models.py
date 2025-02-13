@@ -36,7 +36,7 @@ class FacultyModel(BaseModel):
 
 class StudentModel(BaseModel):
     user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='student')
-    course=models.ManyToManyField(CourseModel)
+    course=models.ForeignKey(CourseModel, on_delete=models.CASCADE ,related_name='student')
     first_name=models.CharField(max_length=50)
     last_name=models.CharField(max_length=50)
     contact=models.IntegerField()

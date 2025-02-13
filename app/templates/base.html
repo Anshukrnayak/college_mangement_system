@@ -19,8 +19,12 @@
                 <ul class="flex space-x-6">
                     {% if request.user.is_authenticated %}
                     <li><a href="{% url 'home' %}" class="hover:text-gray-200">Home</a></li>
-                    <li><a href="#courses" class="hover:text-gray-200">Courses</a></li>
-                    <li><a href="#about" class="hover:text-gray-200">About</a></li>
+
+                    {% if request.user.is_staff %}
+                    <li><a href="{% url 'profile'  %}" class="hover:text-gray-200">Faculty</a></li>
+                    <li><a href="{% url 'student' %}" class="hover:text-gray-200">Students</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'student_registration'  %}" class="hover:text-gray-200">Register</a></li>
                     <li><a href="#contact" class="hover:text-gray-200">Contact</a></li>
                     <li><a href="{% url 'logout' %}" class="hover:text-gray-200">Logout</a></li>
                     {% else %}
