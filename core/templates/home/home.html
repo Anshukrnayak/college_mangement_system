@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-6">
+    <!-- Hero Section -->
+    <section class="bg-blue-600 text-white rounded-lg shadow-md p-8 mb-8 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">Welcome to the College Management System</h1>
+        <p class="text-lg md:text-xl mb-6">Manage students, courses, and faculty with ease. Explore our platform to streamline your academic operations.</p>
+        <a href="" class="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            Get Started
+        </a>
+    </section>
+
+    <!-- Course Descriptions -->
+    <section class="mb-8">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Explore Our Courses</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Course 1 -->
+            <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition">
+                <h3 class="text-xl font-semibold mb-2 text-gray-700">Computer Science</h3>
+                <p class="text-gray-600">Dive into programming, algorithms, and software development. Learn skills in Python, Java, and more to build cutting-edge technology.</p>
+            </div>
+            <!-- Course 2 -->
+            <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition">
+                <h3 class="text-xl font-semibold mb-2 text-gray-700">Business Administration</h3>
+                <p class="text-gray-600">Master management, finance, and marketing. Prepare for leadership roles with practical case studies and real-world projects.</p>
+            </div>
+            <!-- Course 3 -->
+            <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition">
+                <h3 class="text-xl font-semibold mb-2 text-gray-700">Mechanical Engineering</h3>
+                <p class="text-gray-600">Explore thermodynamics, robotics, and design. Gain hands-on experience in state-of-the-art labs to innovate in engineering.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guidance Section -->
+    <section>
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Getting Started Guide</h2>
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <ul class="space-y-4 text-gray-600">
+                <li class="flex items-start">
+                    <span class="text-blue-600 mr-2">1.</span>
+                    <div>
+                        <strong>Explore the Dashboard:</strong> Use the sidebar to navigate to sections like Students, Faculty, and Courses.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-blue-600 mr-2">2.</span>
+                    <div>
+                        <strong>Manage Students:</strong> Add, view, or update student information in the Student Management section.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-blue-600 mr-2">3.</span>
+                    <div>
+                        <strong>Access Reports:</strong> Generate reports to track academic performance and institutional metrics.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-blue-600 mr-2">4.</span>
+                    <div>
+                        <strong>Contact Support:</strong> Reach out via the Profile section if you need assistance.
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+{% endblock %}
