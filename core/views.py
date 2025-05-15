@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Student, Faculty, Course
 from .forms import StudentForm,FacultyForm
 
+
+# Student management
+
 def home_view(request):
     students = Student.objects.all()
     return render(request, 'home/home.html', {'students': students})
@@ -42,26 +45,59 @@ def student_delete_view(request, pk):
 
 
 # Manage profile
+
 def faculty_profile_view(request):
    faculty=get_object_or_404(Faculty,user=request.user)
    return render(request,'home/profile.html',{'faculty':faculty})
+
+def register_faculty_view(request):
+   form=FacultyForm(data=request.POST,files=request.FILES)
+   if form.is_valid():
+      faculty=form.save()
+      faculty.user=request.user
+      faculty.save()
+
+      return redirect('profile')
+   return render(request,'home/register-faculty.html',{'form':form})
 
 
 def faculty_update_view(request,*args,**kwargs):
    form=FacultyForm(instance=get_object_or_404(Faculty,user=request.user))
 
    if request.method=='POST':
-      form=FacultyForm(instance=get_object_or_404(Faculty,user=request.user))
+      form = FacultyForm(
+         instance=get_object_or_404(Faculty, pk=kwargs['pk']),
+         data=request.POST,
+         files=request.FILES
+      )
+
       if form.is_valid():
          form.save()
+         return redirect('profile')
+      print(form.errors)
 
-         return redirect('')
-
+   return render(request,'home/register-faculty.html',{'form':form})
 
 def faculty_delete_view(request,*args,**kwargs):
+   faculty=get_object_or_404(Faculty,user=request.user)
+   faculty.delete()
+
+   return redirect('profile')
+
+
+# course management :
+
+def list_course_view(request):
    pass
 
-# I will complete this next day :
+def register_course_view(request):
+   pass
 
+def update_course_view(request):
+   pass
 
+def delete_course_view(request):
+   pass
+
+# I will implement next day.
 

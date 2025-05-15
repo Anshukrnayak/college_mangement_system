@@ -63,6 +63,12 @@
                 Edit Profile
             </a>
         </div>
+        <div class="mt-6 flex justify-end space-x-4">
+            <a href="{% url 'faculty-delete' faculty.pk %}" class="inline-flex items-center px-4 py-2 bg-red-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                Delete
+            </a>
+        </div>
+
     </div>
 </div>
 {% endblock %}

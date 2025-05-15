@@ -66,12 +66,10 @@ class FacultyForm(forms.ModelForm):
                 'min': '0',
                 'step': '0.01'
             }),
-            'course': forms.Select(attrs={
-                'class': 'mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500'
-            }) if hasattr(Faculty, 'course') and Faculty._meta.get_field('course').get_internal_type() == 'ForeignKey' else forms.TextInput(attrs={
-                'class': 'mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500',
-                'placeholder': 'Enter course'
-            }),
+            'course': forms.SelectMultiple(attrs={
+                    'class': 'mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500'
+                })
+
         }
         labels = {
             'profile_pic': 'Profile Picture',

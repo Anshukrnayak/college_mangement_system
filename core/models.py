@@ -35,10 +35,13 @@ class Faculty(BaseModel):
     course = models.ManyToManyField(Course, related_name='faculty')
 
     def clean(self):
-        if self.salary < 10000:
-            raise ValidationError('Salary must be more than 10000.')
-        if self.experience < 0:
-            raise ValidationError('Experience must be a non-negative number.')
+        if self.experience is not None and self.experience < 0:
+            raise ValidationError({'experience': 'Experience cannot be negative.'})
+
+        if self.salary is not None and self.salary < 0:
+            raise ValidationError({'salary': 'Salary cannot be negative.'})
+
+
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
