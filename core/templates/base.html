@@ -27,13 +27,15 @@
         <aside class="w-64 bg-white shadow-md rounded-lg p-4">
             <h2 class="text-lg font-semibold mb-4">Navigation</h2>
             <ul class="space-y-2">
+
                 <li><a href="{% url 'home' %}" class="block p-2 rounded hover:bg-blue-100">Dashboard</a></li>
                 <li><a href="{% url 'students' %}" class="block p-2 rounded hover:bg-blue-100">Students</a></li>
-                <li><a href="#" class="block p-2 rounded hover:bg-blue-100">Faculty</a></li>
-                <li><a href="#" class="block p-2 rounded hover:bg-blue-100">Courses</a></li>
-                <li><a href="#" class="block p-2 rounded hover:bg-blue-100">Departments</a></li>
-                <li><a href="{% url 'student-register' %}" class="block p-2 rounded hover:bg-blue-100">Register student</a></li>
+                <li><a href="{% url 'faculties' %}" class="block p-2 rounded hover:bg-blue-100">Faculty</a></li>
+                <li><a href="{% url 'courses' %}" class="block p-2 rounded hover:bg-blue-100">Courses</a></li>
+                <li><a href="{% url 'student-register' %}" class="block p-2 rounded hover:bg-blue-100">Register Student</a></li>
                 <li><a href="{% url 'faculty-register' %}" class="block p-2 rounded hover:bg-blue-100">Register Faculty</a></li>
+                <li><a href="{% url 'register-course' %}" class="block p-2 rounded hover:bg-blue-100">Register Course</a></li>
+                <li><a href="#" class="block p-2 rounded hover:bg-blue-100">APIs</a></li>
 
             </ul>
         </aside>

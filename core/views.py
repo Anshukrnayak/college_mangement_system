@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404,get_list_or_404, redirect
 from .models import Student, Faculty, Course
-from .forms import StudentForm,FacultyForm
+from .forms import StudentForm,FacultyForm,CourseForm
 
 
 # Student management
@@ -46,18 +46,24 @@ def student_delete_view(request, pk):
 
 # Manage profile
 
+def faculyt_list_view(request):
+   faculties=get_list_or_404(Faculty)
+   return render(request,'home/faculty.html',{'faculties':faculties})
+
 def faculty_profile_view(request):
    faculty=get_object_or_404(Faculty,user=request.user)
    return render(request,'home/profile.html',{'faculty':faculty})
 
 def register_faculty_view(request):
-   form=FacultyForm(data=request.POST,files=request.FILES)
-   if form.is_valid():
-      faculty=form.save()
-      faculty.user=request.user
-      faculty.save()
 
-      return redirect('profile')
+   if request.method=='POST':
+      form=FacultyForm(data=request.POST,files=request.FILES)
+      if form.is_valid():
+         faculty=form.save()
+         faculty.user=request.user
+         faculty.save()
+         return redirect('profile')
+
    return render(request,'home/register-faculty.html',{'form':form})
 
 
@@ -86,18 +92,31 @@ def faculty_delete_view(request,*args,**kwargs):
 
 
 # course management :
-
 def list_course_view(request):
-   pass
+   courses=Course.objects.all()
+   return render(request,'home/course.html',{'courses':courses})
 
 def register_course_view(request):
-   pass
+   form=CourseForm(data=request.POST)
+   if form.is_valid():
+      form.save()
+      return redirect('courses')
+   return render(request,'home/register-course.html',{'form':form})
 
-def update_course_view(request):
-   pass
 
-def delete_course_view(request):
-   pass
+def update_course_view(request,*args,**kwargs):
+   instance=get_object_or_404(Course,id=kwargs['pk'])
+   form=CourseForm(instance=instance,data=request.POST)
+   if form.is_valid():
+      form.save()
+      return redirect('courses')
+   return render(request,'home/register-course.html',{'form':form})
 
-# I will implement next day.
 
+def delete_course_view(request,*args,**kwargs):
+   instance=get_object_or_404(Course,pk=kwargs['pk'])
+   instance.delete()
+   return redirect('courses')
+
+
+# next day I will implement APIs and authentication

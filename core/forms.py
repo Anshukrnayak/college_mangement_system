@@ -86,3 +86,17 @@ class FacultyForm(forms.ModelForm):
             'salary': {'required': 'Salary is required.'},
             'course': {'required': 'Course is required.'}
         }
+
+
+
+class CourseForm(forms.ModelForm):
+    class Meta:
+        model=Course
+        fields=['name','duration','fees']
+
+        widgets={
+            'name':forms.TextInput(attrs={'class':'mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500'}),
+            'duration':forms.NumberInput(attrs={'class':'mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-50'}),
+            'fees':forms.NumberInput(attrs={'class':'mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-50'})
+        }
+

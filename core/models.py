@@ -51,7 +51,7 @@ class Student(BaseModel):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     location = models.CharField(max_length=250)
-    faculty = models.ForeignKey(Faculty, on_delete=models.SET_NULL, null=True, blank=True)
+    faculty = models.ForeignKey(Faculty, on_delete=models.SET_NULL, null=True, blank=True,related_name='students')
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='students')
 
     def __str__(self):
